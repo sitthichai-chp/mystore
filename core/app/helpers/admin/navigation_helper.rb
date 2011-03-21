@@ -31,7 +31,10 @@ module Admin::NavigationHelper
     if options[:css_class]
       css_classes << options[:css_class]
     end
-    content_tag('li', link, :class => css_classes.join(' '))
+    
+     
+        
+    content_tag('li', content_tag('span', icon(options[:label]) + ' ' + link) , :class => css_classes.join(' '))
   end
 
 
