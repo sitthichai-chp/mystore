@@ -75,7 +75,7 @@ body {
       #content a:visited {
         color: #3C7DFB; }
     #content.with-sidebar {
-      background: url(../../images/admin/bg/content-back.png) right top repeat-y;
+      background: #FFFFFF url(../../images/admin/bg/content-back.png) right top repeat-y;
       padding-right: 340px;
       position: relative; }
       #sidebar {
