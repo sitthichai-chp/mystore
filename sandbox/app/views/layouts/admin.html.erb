@@ -19,6 +19,9 @@
       <% end %>
     </ul>
     <div id="progress"><%= image_tag 'progress.gif' %> <%= t('loading') %>...</div>
+    
+    <%= hook :admin_login_navigation_bar %>
+    
     <br class="clear" />
   </div>
 
