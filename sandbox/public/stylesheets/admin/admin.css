@@ -2,13 +2,18 @@
 #login-nav,
 #store-nav {
   float: right;
-   margin-top: 10px;}
+   margin-top: 15px !important;}
   #language-bar li,
   #login-nav li,
   #store-nav li {
     float: left;
-    margin-right: 1em;
+    margin-right: 1em !important;
     list-style: none; }
+    #login-nav li a{
+       color: #FFF;  },
+       #login-nav li:first-child{
+       border: 0px !important; }
+    
 
 .address-form label,
 #creditcard label {
@@ -62,7 +67,7 @@ body {
     margin: 0em 1em 1em 1em;
     padding: 1em;
     background: #fff;
-    color: #111;
+    color: #333;
     min-height: 500px; }
     #content a {
       color: #3C7DFB; }
@@ -70,7 +75,7 @@ body {
       #content a:visited {
         color: #3C7DFB; }
     #content.with-sidebar {
-      background: #fff url(../../images/admin/bg/content-back.png) right top repeat-y;
+      background: url(../../images/admin/bg/content-back.png) right top repeat-y;
       padding-right: 340px;
       position: relative; }
       #sidebar {
@@ -122,13 +127,7 @@ body {
 			height:19px;
 			font-size:13px;
 			text-decoration: none;
-			outline: none;
-			/*margin-left: -5px;*/
-              /*display: block;
-              padding: 10px 20px 10px;
-              outline: none;
-              text-decoration: none;
-              color: #666 !important;*/ }
+			outline: none;  }
               #sidebar ul.sidebar li a:hover{
                 font-weight:normal;
               	background:transparent url('../../images/admin/admin-mystore/screen-settings.png') no-repeat; }
@@ -212,8 +211,10 @@ body {
 		  text-decoration: none; 
 		  font-weight: bold;
 		  outline: none; }
+	  #admin-menu ul li.selected span a{
+	    color:#0d6b54; }
       #admin-menu ul li:first-child {
-        border-left: 1px solid #34599B; }
+        }
       #admin-menu ul li.selected {
         background:#dadada;
         height: 47px; }
@@ -275,9 +276,12 @@ body {
     a.button span {
       background: transparent url(../../images/admin/buttons/left_01.png) no-repeat;
       display: block;
-      line-height: 22px;
-      padding: 7px 0 5px 14px;
-      text-shadow: #efefef 1px 1px 0px; }
+      line-height: 27px;
+      padding: 7px 3px 5px 29px;
+      margin-right: 5px;
+      color: #FFF;
+      text-shadow: #333333 0px 1px 0px; 
+       }
     a.button img {
       vertical-align: middle;
       margin: 0 3px 0 0; }
@@ -309,11 +313,13 @@ body {
       position: relative;
       display: block;
       white-space: nowrap;
-      padding: 0 0 0 20px;
-      height: 35px;
-      line-height: 35px;
+      padding: 0 0 0 25px;
+      margin-right: 5px;
+      height: 40px;
+      line-height: 40px;
       background: url(../../images/admin/buttons/left_01.png) center left no-repeat;
-      text-shadow: #efefef 1px 1px 0px; }
+      color: #FFF;
+      text-shadow: #333333 0px 1px 0px; }
       button span img {
         vertical-align: middle;
         margin: 0 3px 0 0; }
