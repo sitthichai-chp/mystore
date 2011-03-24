@@ -9,7 +9,6 @@
     <%= hook :admin_product_tabs, {:current => current} do %>
 
       <li<%== ' class="active"' if current == "Product Details" %>>
-		<%= image_tag("add-to-cart.png") %>
         <%= link_to t("product_details"), edit_admin_product_url(@product) %>
       </li>
       <li<%== ' class="active"' if current == "Images" %>>
