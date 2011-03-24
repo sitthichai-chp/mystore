@@ -6,41 +6,79 @@
       <div class="dashboard_left">
       <%= hook :admin_dashboard_left do %>
         <div class="dashboard_small_wrapper">
-          <h2><%= t('best_selling_products') %></h2>
-          <div id="best_selling_products" style="width:50%;height:170px;float:left"></div>
-          <div id="pie_legend">
-            <% @best_selling_variants.each_with_index do |v,i| %>
-              <span style="background-color:<%= @pie_colors[i] %>">&nbsp;</span>
-              <label><%= truncate v[0], :length => 27 %></label>
-              <div><%= number_with_delimiter v[1] %> <%= t(:units) %></div>
+        	
+          <h2><%= t('last_5_orders') %></h2>
+          <table>
+            <thead>
+              <tr>
+                <th><%= t('name') %></th>
+                <th class="text-right"><%= t('items') %></th>
+                <th class="text-right"><%= t('total') %></th>
+              </tr>
+            </thead>
+            <% @last_five_orders.each do |order| %>
+              <tr>
+                <td><%= truncate order[0], :length => 18 %></td>
+                <td class="text-right"><%= order[1] %></td>
+                <td class="text-right"><%= number_to_currency order[2] %></td>
+              </tr>
             <% end %>
-          </div>
-
-          <h2><%= t('top_grossing_products') %></h2>
-          <div id="top_grossing_products" style="width:50%;height:170px;float:left"></div>
-          <div id="pie_legend">
-            <% @top_grossing_variants.each_with_index do |v,i| %>
-              <span style="background-color:<%= @pie_colors[i] %>">&nbsp;</span>
-              <label><%= truncate v[0], :length => 27 %></label>
-              <div><%= number_to_currency v[1], :precision => 0 %></div>
-            <% end %>
-          </div>
-
-          <h2><%= t('best_selling_taxons') %></h2>
-          <div id="best_selling_taxons" style="width:50%;height:170px;float:left"></div>
-          <div id="pie_legend">
-            <% @best_selling_taxons.each_with_index do |t,i| %>
-              <span style="background-color:<%= @pie_colors[i] %>">&nbsp;</span>
-              <label><%= truncate t[0], :length => 27 %></label>
-              <div><%= number_with_delimiter t[1] %> <%= t(:units) %></div>
-            <% end %>
-          </div>
-
+          </table>
+          
+           <h2><%= t('5_biggest_spenders') %></h2>
+	          <table>
+	            <thead>
+	              <tr>
+	                <th><%= t('name') %></th>
+	                <th class="text-right"><%= t('ord_qty') %></th>
+	                <th class="text-right"><%= t('ord_total') %></th>
+	              </tr>
+	            </thead>
+	            <% @biggest_spenders.each do |order| %>
+	              <tr>
+	                <td><%= truncate order[0], :length => 18 %></td>
+	                <td class="text-right"><%= order[1] %></td>
+	                <td class="text-right"><%= number_to_currency order[2] %></td>
+	              </tr>
+	            <% end %>
+	          </table>
+	          
+          <div style="display:none;">
+	          <h2><%= t('best_selling_products') %></h2>
+	          <div id="best_selling_products" style="width:50%;height:170px;float:left"></div>
+	          <div id="pie_legend">
+	            <% @best_selling_variants.each_with_index do |v,i| %>
+	              <span style="background-color:<%= @pie_colors[i] %>">&nbsp;</span>
+	              <label><%= truncate v[0], :length => 27 %></label>
+	              <div><%= number_with_delimiter v[1] %> <%= t(:units) %></div>
+	            <% end %>
+	          </div>
+	
+	          <h2><%= t('top_grossing_products') %></h2>
+	          <div id="top_grossing_products" style="width:50%;height:170px;float:left"></div>
+	          <div id="pie_legend">
+	            <% @top_grossing_variants.each_with_index do |v,i| %>
+	              <span style="background-color:<%= @pie_colors[i] %>">&nbsp;</span>
+	              <label><%= truncate v[0], :length => 27 %></label>
+	              <div><%= number_to_currency v[1], :precision => 0 %></div>
+	            <% end %>
+	          </div>
+	
+	          <h2><%= t('best_selling_taxons') %></h2>
+	          <div id="best_selling_taxons" style="width:50%;height:170px;float:left"></div>
+	          <div id="pie_legend">
+	            <% @best_selling_taxons.each_with_index do |t,i| %>
+	              <span style="background-color:<%= @pie_colors[i] %>">&nbsp;</span>
+	              <label><%= truncate t[0], :length => 27 %></label>
+	              <div><%= number_with_delimiter t[1] %> <%= t(:units) %></div>
+	            <% end %>
+	          </div>
+		  </div>
         </div>
       </div>
     <% end %>
     <%= hook :admin_dashboard_center do %>
-      <div class="dashboard_main">
+      <div class="dashboard_main" style="margin: 0 auto;">
         <div class="dashboard_main_wrapper">
           <h2 id="order_by_day_title"><%= t('orders') %> <%= t('count') %> <%= t('by_day') %> (<%= t('last_7_days') %>)</h2>
 
@@ -82,59 +120,64 @@
             <%= select_tag "orders_by_day_value", options_for_select({t('count') => 'Count', t('value') => 'Value'}, 'Count') %>
           </div>
         </div>
+        <br/>        
       </div>
+      
+      
     <% end %>
     <%= hook :admin_dashboard_right do %>
-      <div class="dashboard_right">
-          <h2><%= t('last_5_orders') %></h2>
-          <table>
-            <thead>
-              <tr>
-                <th><%= t('name') %></th>
-                <th class="text-right"><%= t('items') %></th>
-                <th class="text-right"><%= t('total') %></th>
-              </tr>
-            </thead>
-            <% @last_five_orders.each do |order| %>
-              <tr>
-                <td><%= truncate order[0], :length => 18 %></td>
-                <td class="text-right"><%= order[1] %></td>
-                <td class="text-right"><%= number_to_currency order[2] %></td>
-              </tr>
-            <% end %>
-          </table>
-
-          <h2><%= t('5_biggest_spenders') %></h2>
-          <table>
-            <thead>
-              <tr>
-                <th><%= t('name') %></th>
-                <th class="text-right"><%= t('ord_qty') %></th>
-                <th class="text-right"><%= t('ord_total') %></th>
-              </tr>
-            </thead>
-            <% @biggest_spenders.each do |order| %>
-              <tr>
-                <td><%= truncate order[0], :length => 18 %></td>
-                <td class="text-right"><%= order[1] %></td>
-                <td class="text-right"><%= number_to_currency order[2] %></td>
-              </tr>
-            <% end %>
-          </table>
-
-          <h2><%= t('out_of_stock_products') %></h2>
-          <table>
-            <thead>
-              <tr>
-                <th><%= t('name') %></th>
-              </tr>
-            </thead>
-            <% @out_of_stock_products.each do |product| %>
-              <tr>
-                <td><%= product.name %></td>
-              </tr>
-            <% end %>
-          </table>
+      <div class="dashboard_right">      	
+      	<div style="display:none;">
+	          <h2><%= t('last_5_orders') %></h2>
+	          <table>
+	            <thead>
+	              <tr>
+	                <th><%= t('name') %></th>
+	                <th class="text-right"><%= t('items') %></th>
+	                <th class="text-right"><%= t('total') %></th>
+	              </tr>
+	            </thead>
+	            <% @last_five_orders.each do |order| %>
+	              <tr>
+	                <td><%= truncate order[0], :length => 18 %></td>
+	                <td class="text-right"><%= order[1] %></td>
+	                <td class="text-right"><%= number_to_currency order[2] %></td>
+	              </tr>
+	            <% end %>
+	          </table>
+	
+	          <h2><%= t('5_biggest_spenders') %></h2>
+	          <table>
+	            <thead>
+	              <tr>
+	                <th><%= t('name') %></th>
+	                <th class="text-right"><%= t('ord_qty') %></th>
+	                <th class="text-right"><%= t('ord_total') %></th>
+	              </tr>
+	            </thead>
+	            <% @biggest_spenders.each do |order| %>
+	              <tr>
+	                <td><%= truncate order[0], :length => 18 %></td>
+	                <td class="text-right"><%= order[1] %></td>
+	                <td class="text-right"><%= number_to_currency order[2] %></td>
+	              </tr>
+	            <% end %>
+	          </table>
+	
+	          <h2><%= t('out_of_stock_products') %></h2>
+	          <table>
+	            <thead>
+	              <tr>
+	                <th><%= t('name') %></th>
+	              </tr>
+	            </thead>
+	            <% @out_of_stock_products.each do |product| %>
+	              <tr>
+	                <td><%= product.name %></td>
+	              </tr>
+	            <% end %>
+	          </table>
+          </div>
         </div>
       </div>
     <% end %>
