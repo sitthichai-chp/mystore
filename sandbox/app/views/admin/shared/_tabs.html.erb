@@ -1,6 +1,10 @@
 <%= tab :overview, :route => :admin %>
 <%= tab :orders, :payments, :creditcard_payments, :shipments, :creditcards, :return_authorizations %>
 <%= tab :products , :option_types, :properties, :prototypes, :variants, :product_properties, :taxons %>
+<li class=""><span><%= image_tag("admin/icons/po.png") %> <a href="#"> Purchasing</a></span></li>
+<li class=""><span><%= image_tag("admin/icons/warehouse.png") %> <a href="#"> Warehouse</a></span></li>
+<li class=""><span><%= image_tag("admin/icons/account.png") %> <a href="#"> Accounting</a></span></li>
 <%= tab :reports %>
 <%= tab :configurations, :general_settings, :mail_settings, :tax_categories, :zones, :states, :gateway_configurations, :inventory_settings, :taxonomies, :label => 'configuration' %>
 <%= tab :users %>
+
